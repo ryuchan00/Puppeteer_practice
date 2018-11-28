@@ -7,5 +7,8 @@
     "test": "node skelton.js"
   },
   "author": "Ryutaro Yamakawa",
+  "dependencies": {
+    "puppeteer": "1.6.0"
+  },
   "license": "ISC"
 }
