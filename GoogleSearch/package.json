@@ -1,0 +1,11 @@
+{
+  "name": "googlesearch",
+  "version": "1.0.0",
+  "description": "Googleで検索",
+  "main": "skelton.js",
+  "scripts": {
+    "test": "node skelton.js"
+  },
+  "author": "Ryutaro Yamakawa",
+  "license": "ISC"
+}
