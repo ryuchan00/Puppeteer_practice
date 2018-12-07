@@ -12,17 +12,30 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *
+ *
  */
+
+// usage:
+// node screenshot.js
 
 'use strict';
 
 const puppeteer = require('puppeteer');
 
 (async() => {
-    const  = await puppeteer.launch();
-    const browser = await puppeteer.launch();
+    const TARGET_URL = 'https://yahoo.co.jp';
+    // Macだとsafari
+    // const browser = await puppeteer.launch();
+    // Chromeを指定
+    const browser = await puppeteer.launch({
+        headless: false,
+        slowMo: 50,
+        executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+    });
     const page = await browser.newPage();
-    await page.goto('http://example.com');
+    await page.goto(TARGET_URL);
     await page.screenshot({path: 'example.png'});
     await browser.close();
 })();
