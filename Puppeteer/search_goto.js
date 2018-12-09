@@ -1,3 +1,4 @@
+// urlを指定してgotoする
 const puppeteer = require('puppeteer');
 
 //メインロジック
@@ -21,12 +22,13 @@ const puppeteer = require('puppeteer');
     // Yahoo!のトップページへ遷移し、ロードが完了するまで待つ
     await page.goto('https://www.yahoo.co.jp/');
 
-    console.log('---wait and click');
-    await Promise.all([
-        page.waitForNavigation({waitUntil: 'load'}),
-        // buttonタグを特定してクリックする
-        await page.click('#topicsfb .topicsindex ul.emphasis li:nth-child(1) a'),
-    ]);
+    console.log('---next url');
+    const nextUrl = await page.evaluate(() =>
+        document.querySelector('#topicsfb .topicsindex ul.emphasis li:nth-child(1) a').href);
+    console.log(nextUrl);
+
+    console.log('---goto');
+    await page.goto(nextUrl);
 
     console.log('---evaluate');
     const h2Title = await page.evaluate(() => document.querySelector('h2.newsTitle').textContent);
