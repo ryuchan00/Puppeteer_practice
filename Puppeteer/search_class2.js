@@ -20,18 +20,11 @@ const puppeteer = require('puppeteer');
     // 秀和システムのページへ遷移
     await page.goto('https://www.shuwasystem.co.jp/');
 
-    // id='newbook'の要素の表示を待つ
-    await page.waitFor('#head_news .main-article:nth-child(3)');
+    // Googleカスタム検索窓の表示を待つ
+    await page.waitForSelector('#gs_tti50 .gsc-input');
 
-    // 要素の取得
-    const newBook = await page.evaluate((selector) => {
-        // evaluate関数に渡す第一引数のfunctionは、
-        // 第二引数として渡したパラメータをselectorに引き継いでブラウザ内で実行する
-        return document.querySelector(selector).innerHTML;
-
-    }, '#head_news');
-
-    console.log(newBook);
+    // Googleカスタム検索窓に Puppeteer とキーボード入力を行う
+    await page.type('#gs_tti50 .gsc-input', 'Puppeteer');
 
     // ブラウザの終了
     await browser.close();
