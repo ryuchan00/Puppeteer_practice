@@ -6,13 +6,13 @@ const USER_ID = process.env.MY_USER_ID;
 const PASSWORD = process.env.MY_PASSWORD;
 
 function nowtime(){
-    var d = new Date();
-    var year = d.getYear()+1900;
-    var month = d.getMonth()+1;
-    var date = d.getDate();
-    var hour = d.getHours();
-    var minute = d.getMinutes();
-    var second = d.getSeconds();
+    let d = new Date();
+    let year = d.getYear()+1900;
+    let month = d.getMonth()+1;
+    let date = d.getDate();
+    let hour = d.getHours();
+    let minute = d.getMinutes();
+    let second = d.getSeconds();
     d = year + "年" + month + "月" + date + "日" + hour + "時" + minute + "分"+ second + "秒でーす";
     return d;
 }
